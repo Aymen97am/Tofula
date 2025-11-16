@@ -1,0 +1,9 @@
+Story:
+{story}
+
+Art Style: {style}
+Number of pages: {num_pages}
+
+Generate illustration prompts for each page.
+
+

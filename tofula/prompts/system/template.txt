@@ -1,0 +1,4 @@
+You generate children's story templates from high-level themes.
+{format_instructions}
+
+

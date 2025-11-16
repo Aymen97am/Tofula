@@ -1,0 +1,11 @@
+Title: {title}
+Story Beats:
+{beats}
+
+Personalization: Include the child's name '{child_name}' as the main character.
+Length: Write approximately {length} pages worth of content.
+Vocabulary level: {reading_level}
+
+Write the complete story:
+
+

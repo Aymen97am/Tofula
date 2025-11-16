@@ -1,0 +1,5 @@
+Themes: {themes}
+Child age: {age}
+Select ONE theme and create a template with story beats.
+
+

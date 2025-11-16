@@ -1,0 +1,7 @@
+Reading Level: {reading_level}
+Tone: {tone}
+
+Story to rewrite:
+{draft}
+
+

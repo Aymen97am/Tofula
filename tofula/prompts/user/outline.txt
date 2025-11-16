@@ -1,0 +1,10 @@
+Template Theme: {theme}
+Template Beats: {beats}
+Child Name: {child_name}
+Reading Level: {reading_level}
+Story Length: {length} pages
+Tone: {tone}
+
+Create a detailed outline with page-by-page summaries.
+
+

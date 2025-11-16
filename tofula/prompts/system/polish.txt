@@ -1,0 +1,5 @@
+Rewrite the following story to match the target reading level and tone.
+Maintain the plot and characters, but adjust vocabulary and sentence complexity.
+Return ONLY the rewritten story text.
+
+
