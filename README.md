@@ -84,43 +84,50 @@ CLI options:
 - `--tone`: Overall tone of the story.
 - `--style`: Illustration style description.
 
-- Further example inputs are provided in tofula/example_inputs.json
+- Further example inputs are provided in `tofula/example_inputs.json`
 
 
-### Architecture:
-             +---------------------------+
-             |         CLI / main.py     |
-             |  (arg parsing, .env, I/O) |
-             +-------------+-------------+
-                           |
-                           v
-               +-----------+-----------+
-               |  StoryGenerationPipeline |
-               |      (src/pipeline.py)   |
-               +-----------+-----------+
-                           |
-        +------------------+------------------+
-        |                  |                  |
-        v                  v                  v
-   1) Template        2) Outline         3) Draft
-      selection          generation         generation
-   (structure)        (page-level beats)  (full prose)
-        |                  |                  |
-        +------------------+------------------+
-                           |
-                           v
-                  4) Polishing (LLM)
-                           |
-                           v
-                  5) Moderation (safety)
-                           |
-                           v
-        +------------------+------------------+
-        |                                   |
-        v                                   v
-   6) Illustration prompts            7) Illustration images
-      (per page, text)                  (per page, PNGs in `temp/`)
-                           |
-                           v
-                 8) PDF export (story + images)
-                   (`src/pdf_export.py` → `generated/`)
+### Architecture
+
+```text
++---------------------------+
+|         CLI / main.py     |
+|  (arg parsing, .env, I/O) |
++-------------+-------------+
+              |
+              v
+   +----------+-----------+
+   |  StoryGeneration     |
+   |     Pipeline         |
+   |   (src/pipeline.py)  |
+   +----------+-----------+
+              |
+   +----------+-----------+
+   |          |           |
+   v          v           v
+1) Template  2) Outline  3) Draft
+   selection    generation   generation
+   (structure)  (page beats) (full prose)
+        |           |           |
+        +-----------+-----------+
+                    |
+                    v
+           4) Polishing (LLM)
+                    |
+                    v
+           5) Moderation (safety)
+                    |
+                    v
+  +-----------------+-----------------+
+  |                                   |
+  v                                   v
+6) Illustration prompts         7) Illustration images
+   (per page,                       (PNGs in temp/) 
+   history-dependent for
+    character consitency) 
+
+                    |
+                    v
+8) PDF export (story + images)
+   (src/pdf_export.py → generated/)
+```
