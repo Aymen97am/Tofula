@@ -1,4 +1,4 @@
-## Tofula – Story Generation Pipeline
+## Tofula – Story Generation library
 
 Tofula is a small Python project that generates personalized children's stories and page illustrations using Gemini and LangChain. It can also export a PDF that combines story text with the generated images.
 
