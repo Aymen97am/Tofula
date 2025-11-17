@@ -21,3 +21,18 @@ tofula/generated/*.pdf
 tofula/temp/
 
 
+
+# Node modules
+frontend/node_modules/
+
+# Next.js build output
+frontend/.next/
+frontend/out/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Zip archives
+*.zip
