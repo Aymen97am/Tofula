@@ -6,8 +6,8 @@ from google.genai import types as genai_types
 from google.genai.types import GenerateContentConfig, Modality
 from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
 
-from src.llm_factory import get_chat_llm, get_image_client, build_chain
-from src.structures import (
+from tofula.src.llm_factory import get_chat_llm, get_image_client, build_chain
+from tofula.src.structures import (
     IllustrationPrompts,
     ModerationResult,
     StoryOutline,

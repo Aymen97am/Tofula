@@ -8,8 +8,8 @@ from langchain_core.runnables import RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
-from src.config import MODEL_CONFIGS
-from src.prompt_loader import load_prompt
+from tofula.src.config import MODEL_CONFIGS
+from tofula.src.prompt_loader import load_prompt
 
 logger = logging.getLogger(__name__)
 

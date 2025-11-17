@@ -52,7 +52,7 @@ Once installed, you can run the demo from the CLI:
 
 ```bash
 cd /Users/mac/Desktop/workspace/Tofula
-uv run tofula
+uv run python -m tofula.main
 ```
 
 This will:
@@ -64,7 +64,7 @@ This will:
 You can also customize the story directly from the CLI:
 
 ```bash
-uv run tofula \
+uv run python -m tofula.main \
   --themes "adventure, friendship" \
   --child-name "Emma" \
   --age 6 \
