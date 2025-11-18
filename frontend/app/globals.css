@@ -4,26 +4,44 @@
 
 @layer base {
   :root {
-    --background: 25 10% 96%;
-    --foreground: 25 10% 15%;
+    /* Linear/Notion inspired - Modern SaaS */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
     --card: 0 0% 100%;
-    --card-foreground: 25 10% 15%;
+    --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 25 10% 15%;
-    --primary: 25 75% 55%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 25 10% 92%;
-    --secondary-foreground: 25 10% 15%;
-    --muted: 25 10% 92%;
-    --muted-foreground: 25 8% 45%;
-    --accent: 25 75% 55%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 25 10% 88%;
-    --input: 25 10% 88%;
-    --ring: 25 75% 55%;
-    --radius: 0.75rem;
+    --popover-foreground: 0 0% 9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 9%;
+    --radius: 0.5rem;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Sleek selection */
+  ::selection {
+    background-color: rgb(0 0 0 / 0.99);
+    color: white;
   }
 
   .dark {
@@ -59,6 +77,31 @@
 }
 
 @layer utilities {
+  /* Smooth fade in from bottom */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Subtle scale on hover */
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Shimmer for loading states */
   @keyframes shimmer {
     0% {
       background-position: -1000px 0;
@@ -68,43 +111,63 @@
     }
   }
   
-  @keyframes float {
+  /* Gradient animation */
+  @keyframes gradientFlow {
     0%, 100% {
-      transform: translateY(0px);
+      background-position: 0% 50%;
     }
     50% {
-      transform: translateY(-10px);
+      background-position: 100% 50%;
     }
   }
   
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.4s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out forwards;
   }
   
   .animate-shimmer {
-    animation: shimmer 8s infinite;
+    animation: shimmer 2s infinite linear;
     background: linear-gradient(
       to right,
       transparent 0%,
-      rgba(251, 146, 60, 0.1) 50%,
+      rgba(0, 0, 0, 0.03) 50%,
       transparent 100%
     );
     background-size: 1000px 100%;
   }
   
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
+  /* Hover lift effect */
+  .hover-lift {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .animate-fadeIn {
-    animation: fadeIn 0.5s ease-out;
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Modern blur backdrop */
+  .backdrop-modern {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Focus ring - Linear style */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2;
+  }
+  
+  /* Smooth transitions */
+  .transition-base {
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-smooth {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -113,22 +176,21 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Linear style */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(120, 113, 108, 0.1);
-  border-radius: 10px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(251, 146, 60, 0.3);
-  border-radius: 10px;
+  background: hsl(var(--muted));
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(251, 146, 60, 0.5);
+  background: hsl(var(--muted-foreground) / 0.5);
 }

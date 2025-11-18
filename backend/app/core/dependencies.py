@@ -48,6 +48,30 @@ async def get_current_user_id(
         )
 
 
+async def verify_studio_password(
+    x_studio_password: Annotated[Optional[str], Header()] = None,
+    settings: Settings = Depends(get_settings),
+) -> bool:
+    """
+    Verify the Studio password from the X-Studio-Password header.
+    
+    This is a simple password-based authentication for Studio access.
+    """
+    if not x_studio_password:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Studio password required. Please provide X-Studio-Password header."
+        )
+    
+    if x_studio_password != settings.STUDIO_PASSWORD:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Invalid studio password"
+        )
+    
+    return True
+
+
 async def get_admin_user(
     authorization: Annotated[Optional[str], Header()] = None,
     x_user_id: Annotated[Optional[str], Header()] = None,

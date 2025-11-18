@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const STUDIO_PASSWORD = 'Tofula@2025';
 
 class ApiClient {
   private client: AxiosInstance;
@@ -13,13 +14,19 @@ class ApiClient {
       },
     });
 
-    // Request interceptor to add auth token
+    // Request interceptor to add auth token and studio password
     this.client.interceptors.request.use(
       (config) => {
         const token = this.getToken();
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
+        
+        // Add studio password for studio endpoints
+        if (config.url?.includes('/studio/')) {
+          config.headers['X-Studio-Password'] = STUDIO_PASSWORD;
+        }
+        
         return config;
       },
       (error) => Promise.reject(error)

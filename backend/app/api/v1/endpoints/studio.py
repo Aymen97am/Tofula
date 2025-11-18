@@ -6,7 +6,7 @@ from typing import List, Optional, Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app.core.dependencies import get_admin_user
+from app.core.dependencies import get_admin_user, verify_studio_password
 from app.schemas import (
     StoryTemplateCreate,
     StoryTemplateUpdate,
@@ -31,6 +31,7 @@ async def generate_story(
     admin_id: Annotated[str, Depends(get_admin_user)],
     tofula: Annotated[TofuulaService, Depends(get_tofula_service)],
     db: Annotated[DatabaseService, Depends(get_db_service)],
+    _: Annotated[bool, Depends(verify_studio_password)] = True,
 ):
     """
     Generate a new story using the Tofula pipeline and save it as a draft template.

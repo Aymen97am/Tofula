@@ -6,9 +6,9 @@ import tempfile
 import logging
 from typing import Dict, Optional
 
-from tofula.src.pipeline import StoryGenerationPipeline
-from tofula.src.pdf_export import save_story_to_pdf
-from tofula.src.structures import StoryOutput
+from backend.tofula_pipeline.src.pipeline import StoryGenerationPipeline
+from backend.tofula_pipeline.src.pdf_export import save_story_to_pdf
+from backend.tofula_pipeline.src.structures import StoryOutput
 
 from app.core.config import get_settings
 from app.schemas import (
@@ -183,7 +183,7 @@ class TofuulaService:
         
         if not image_client:
             # Fall back to creating a new client
-            from tofula.src.llm_factory import get_image_client
+            from backend.tofula_pipeline.src.llm_factory import get_image_client
             settings = get_settings()
             image_client = get_image_client(settings.IMAGE_MODEL)
         
@@ -222,7 +222,7 @@ class TofuulaService:
         story_text = "\n\n".join([page["text"] for page in pages])
         
         # Create a temporary StoryOutput
-        from tofula.src.structures import StoryOutline, StoryBeat
+        from backend.tofula_pipeline.src.structures import StoryOutline, StoryBeat
         
         outline = StoryOutline(
             title=title,

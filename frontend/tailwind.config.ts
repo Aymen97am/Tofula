@@ -74,6 +74,7 @@ const config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-inter)', 'system-ui', 'sans-serif'], // Can be customized to a display font later
       },
     },
   },

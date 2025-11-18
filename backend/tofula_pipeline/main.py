@@ -14,8 +14,8 @@ from datetime import datetime
 from argparse import ArgumentParser
 from dotenv import load_dotenv
 
-from tofula.src.pdf_export import save_story_to_pdf
-from tofula.src.pipeline import StoryGenerationPipeline
+from backend.tofula_pipeline.src.pdf_export import save_story_to_pdf
+from backend.tofula_pipeline.src.pipeline import StoryGenerationPipeline
 
 
 # Set up logging

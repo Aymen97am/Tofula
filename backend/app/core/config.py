@@ -40,6 +40,9 @@ class Settings(BaseSettings):
     FIREBASE_WEB_API_KEY: Optional[str] = None
     JWT_SECRET_KEY: Optional[str] = "dev-secret-key-change-in-production"
     
+    # Studio Access
+    STUDIO_PASSWORD: str = "Tofula@2025"
+    
     # Storage
     STORAGE_TYPE: str = "local"  # local, gcs, or firebase
     LOCAL_STORAGE_PATH: str = "./storage"

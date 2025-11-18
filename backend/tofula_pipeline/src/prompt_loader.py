@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def _prompts_base_dir() -> Path:
-    # src/ -> tofula/
+    # src/ -> tofula_pipeline/
     return Path(__file__).resolve().parents[1] / "prompts"
 
 
