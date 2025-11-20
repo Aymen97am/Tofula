@@ -14,11 +14,12 @@ wheels/
 .venv
 
 # Environment variables
-.env
+*.env
 
 # Temporary images and pdfs
 tofula/generated/*.pdf
 tofula/temp/
+backend/temp/
 
 
 

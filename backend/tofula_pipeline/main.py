@@ -14,8 +14,8 @@ from datetime import datetime
 from argparse import ArgumentParser
 from dotenv import load_dotenv
 
-from backend.tofula_pipeline.src.pdf_export import save_story_to_pdf
-from backend.tofula_pipeline.src.pipeline import StoryGenerationPipeline
+from tofula_pipeline.src.pdf_export import save_story_to_pdf
+from tofula_pipeline.src.pipeline import StoryGenerationPipeline
 
 
 # Set up logging
@@ -51,7 +51,7 @@ def _parse_args():
     parser.add_argument(
         "--length",
         type=int,
-        default=8,
+        default=6,
         help="Target story length in pages.",
     )
     parser.add_argument(

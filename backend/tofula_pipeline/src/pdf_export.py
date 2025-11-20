@@ -1,7 +1,7 @@
 import os
 import logging
 
-from backend.tofula_pipeline.src.structures import StoryOutput
+from tofula_pipeline.src.structures import StoryOutput
 
 
 def _wrap_text(

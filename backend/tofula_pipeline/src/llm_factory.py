@@ -8,10 +8,14 @@ from langchain_core.runnables import RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
-from backend.tofula_pipeline.src.config import MODEL_CONFIGS
-from backend.tofula_pipeline.src.prompt_loader import load_prompt
+from tofula_pipeline.src.config import MODEL_CONFIGS
+from tofula_pipeline.src.prompt_loader import load_prompt
 
 logger = logging.getLogger(__name__)
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def get_chat_llm(model: str, temperature: float):
